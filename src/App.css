@@ -1,0 +1,299 @@
+:root {
+  --accentColor: darkgoldenrod;
+  --darkAccentColor: #444444;
+  --backgroundColorOne: #eeeeee;
+  --archiveBackgroundOne: #cccccc;
+  --archiveBackgroundTwo: white;
+
+  --backgroundColorOneDark: #333333;
+  --darkAccentColorDark: lightgray;
+  --archiveBackgroundOneDark: #606060;
+  --archiveBackgroundTwoDark: #424242;
+  
+}
+
+html {
+  background-color: var(--darkAccentColor);
+  overflow-wrap: break-word; 
+
+}
+
+::placeholder {
+  opacity: 0.5;
+  text-align: center;
+  font-size: 14px;
+  color: var(--accentColor);
+}
+
+.mainContainer {
+  text-align: center;
+  vertical-align: center;
+  margin: auto;
+  background-color: var(--backgroundColorOne);
+  padding: 10px;
+  border-radius: 20px;
+  font-family: sans-serif;
+}
+
+.mainContainerDark {
+  background-color: var(--backgroundColorOneDark);
+}
+
+.itemContainer {
+  background-color: #aaaaaa;
+  border-radius: 10px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  max-width: 75%;
+  min-width: 33%;
+  font-size: 1.2em;
+}
+
+.itemContainerDark {
+  background-color: #6a6a6a
+}
+p {
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+
+.listHeading {
+  border-width: 0px 0px 2px 0px;
+  border-color: black;
+  border-style: solid;
+  padding-bottom: 15px;
+  color: var(--darkAccentColor);
+}
+
+.listHeadingDark {
+  color: var(--darkAccentColorDark);
+}
+
+.ten {
+  color: var(--accentColor);
+}
+
+.ideaInput {
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.archiveHeading {
+  color: var(--darkAccentColor);
+  margin-bottom: 5px;
+}
+
+.archiveHeadingDark {
+  color: var(--darkAccentColorDark);
+}
+
+.archiveCard {
+  border-radius: 30px;
+  max-width: 450px;
+  min-width: 360px;
+  margin: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  border-width: 2px;
+  color: var(--darkAccentColor);
+  border-style: solid;
+  box-shadow: 0 3px var(--darkAccentColor);
+  box-sizing: border-box;
+  background-color: var(--archiveBackgroundOne);
+
+}
+.archiveCardTwo {
+  background-color: var(--archiveBackgroundTwo);
+  
+}
+
+.archiveCardDark {
+  background-color: var(--archiveBackgroundOneDark);
+  color: var(--darkAccentColorDark);
+}
+.archiveCardTwoDark {
+  background-color: var(--archiveBackgroundTwoDark);
+  color: var(--darkAccentColorDark);
+}
+
+.archiveCardHeading {
+  display: inline-block;
+  padding: 10px 15px 10px 15px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  margin-top: 5px;
+  line-height: 1em;
+  border-width: 2px;
+  border-color: var(--darkAccentColor);
+  border-style: solid;
+  box-shadow: 0 1px var(--darkAccentColor);
+  color: var(--darkAccentColor);
+  background-color: var(--archiveBackgroundOne);
+}
+.archiveCardHeadingTwo {
+  background-color: var(--archiveBackgroundTwo);
+}
+
+.archiveCardHeadingDark {
+  background-color: var(--archiveBackgroundOneDark);
+  color: var(--darkAccentColorDark);
+  border-color: var(--darkAccentColorDark);
+}
+.archiveCardHeadingTwoDark {
+  background-color: var(--archiveBackgroundTwoDark);
+  color: var(--darkAccentColorDark);
+  border-color: var(--darkAccentColorDark);
+}
+
+.archiveCardItem {
+  max-width: 85%;
+  margin-bottom: 5px;
+  padding-left: 5px;
+  
+}
+.archiveCardSection {
+  
+}
+
+button {
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+  border-color: black;
+  border-width: 2px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  box-shadow: 0 4px; black;
+  display: inline-block;
+  font-size: 14px;
+}
+
+button:active {
+  box-shadow: 0 2px;
+  transform: translateY(4px);
+  background-color: #bbbbbb;
+}
+
+.inputStyle {
+  font-size: 16px;
+  border-color: black;
+  border-width: 3px;
+  border-radius: 5px;
+  height: 1.5em;
+  display: inline-block;
+  margin: 0px auto 20px auto;
+}
+
+.inputStyleDark {
+  background-color: lightgray;
+}
+
+.inputStyleDark::placeholder {
+  color:black;
+}
+
+.spanStyle {
+  font-size: 18px;
+  color: black;
+}
+.spanStyleDark {
+  color: lightgray;
+}
+
+span.number {
+  color: var(--accentColor);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.favoriteButton {
+  float: right;
+  appearance: none;
+  height: 25px;
+  width: 25px;
+  border: 2px solid black;
+  border-radius: 8px;
+  transition: .1s linear all;
+  position: relative;
+  bottom: 25px;
+  right: 15px;
+}
+
+.favoriteButton:checked{
+  border: 6px solid var(--accentColor);
+  background-color: yellow;
+}
+
+.favoriteButtonDark:checked{
+  background-color: gold
+}
+
+hr {
+  width: 95%;
+  height: 2px;
+  background-color: var(--darkAccentColor);
+}
+
+.container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.actionSheet {
+  display: block;
+  margin: 3px auto 10px auto;
+/*   Make this a flex row if/when there are more action buttons */
+}
+
+.hintText {
+  font-size: 18px;
+  color: moccasin;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.hintTextDark {
+  color: gold;
+}
+
+.hintTextTopic {
+  font-size: 18px;
+  color: chocolate;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.hintTextTopicDark {
+  color: gold;
+}
+
+@media only screen and (min-width: 600px) {
+  .container {
+    flex-direction: row;
+  }
+  
+  
+}
+
+.clearArchive {
+  align-self: flex-end;
+}
+
+.randomButtons button {
+  margin-top: 20px;
+  width: 60px;
+  padding: 10px;
+}
