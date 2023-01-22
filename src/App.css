@@ -258,11 +258,26 @@ hr {
 /*   Make this a flex row if/when there are more action buttons */
 }
 
+@keyframes hintTextAnimation {
+  0% {
+    top: -.5em;
+  }
+  100% {
+    top: 0em;
+  }
+}
+
+.hintAnim {
+  position:relative;
+  animation: hintTextAnimation .4s infinite alternate ease-in;
+}
+
 .hintText {
   font-size: 18px;
   color: moccasin;
   text-align: left;
   margin-bottom: 5px;
+  margin-left: 5px;
 }
 
 .hintTextDark {
@@ -274,11 +289,15 @@ hr {
   color: chocolate;
   text-align: left;
   margin-bottom: 5px;
+  margin-left: 5px;
+
 }
 
 .hintTextTopicDark {
   color: gold;
 }
+
+
 
 @media only screen and (min-width: 600px) {
   .container {

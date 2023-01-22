@@ -19,7 +19,8 @@ export function IdeaInput(props) {
       className={itemContainerStyle}>
       { 
         props.hintText &&
-        <p className={props.darkMode? "hintText hintTextDark" : "hintText"}>{props.hintText}</p>
+        <p className={props.darkMode? "hintText hintTextDark hintAnim" 
+        : "hintText hintAnim"}>{props.hintText}</p>
       }
       <input
         className={inputStyle}

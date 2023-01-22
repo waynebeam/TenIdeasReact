@@ -129,7 +129,8 @@ export function IdeasList() {
             { 
               !archiveIdeas.length &&
             <p
-              className={darkMode? "hintText hintTextDark" : "hintTextTopic"}>{hintTexts[0]}</p>
+              className={darkMode? "hintAnim hintText hintTextDark" 
+              : "hintAnim hintTextTopic"}>{hintTexts[0]}</p>
             }
             <input
               className={inputStyle}
