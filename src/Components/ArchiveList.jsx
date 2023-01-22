@@ -185,7 +185,9 @@ let headingStyle = "archiveHeading listHeading";
             
           </div>
           :
-          null
+          <p className={spanStyle + " descriptionText"}>
+            Choose a topic, and write <span className={"number"}>10</span> ideas related to it. Each group of <span className={"number"}>10</span> ideas is saved here in the archive. Try to come up with at least <span className={"number"}>10</span> ideas a day, every day. Consecutive days count toward a streak. No judgment. Any idea will do.  
+          </p>
       }
     <div className={"container"}>
       {

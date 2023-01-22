@@ -23,16 +23,16 @@ export function IdeasList() {
 
   const hintTexts = [
     "Come up with a topic \u2193 \u2193",
-    `Now think an idea for "${topic}"`,
-    "Now come up with a second idea",
-    "Now think of idea number 3",
-    "...and 4",
-    "and so on...",
-    "keep going!",
-    "a seventh idea",
-    "7 down 3 to go!",
-    "Number 9,",
-    "Last one, number 10!"
+    `Now think an idea for "${topic} \u2193 \u2193"`,
+    "Now come up with a second idea \u2193 \u2193",
+    "Now think of idea number 3 \u2193 \u2193",
+    "...and 4 \u2193 \u2193",
+    "and so on... \u2193 \u2193",
+    "keep going! \u2193 \u2193",
+    "a seventh idea \u2193 \u2193",
+    "7 down 3 to go! \u2193 \u2193",
+    "Number 9, \u2193 \u2193",
+    "Last one, number 10! \u2193 \u2193"
   ];
   localStorage.setItem("darkMode",darkMode);
   let mainContainerStyle = "mainContainer";
