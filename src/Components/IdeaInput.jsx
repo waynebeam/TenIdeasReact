@@ -22,6 +22,7 @@ export function IdeaInput(props) {
         <p className={props.darkMode? "hintText hintTextDark hintAnim" 
         : "hintText hintAnim"}>{props.hintText}</p>
       }
+      <div>
       <input
         className={inputStyle}
         placeholder={"Here's an idea..."}
@@ -31,6 +32,7 @@ export function IdeaInput(props) {
         onKeyPress={handleKeyPress}
       />
       {(props.latest && <button onClick={props.addIdea}>Enter</button>)}
+    </div>
       <CountIcon index={props.index+1} darkMode={props.darkMode}></CountIcon>
     </div>
   )

@@ -128,9 +128,14 @@ let headingStyle = "archiveHeading listHeading";
 
   return (
     <div>
-      {archiveIdeas.length > 0 && <h2 className={headingStyle}>Idea Archive:</h2>}
+      {
+      archiveIdeas.length > 0 &&
+      <div>
+        <h2 className={headingStyle}>Idea Archive:</h2>
 
       <div className={spanStyle}>{calculateStreak()} | <span className={"number"}>{archiveIdeas.length}</span> ideas saved!</div>
+        </div>
+          }
 
       {
         archiveIdeas.length > 0 ?

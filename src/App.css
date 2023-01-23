@@ -26,8 +26,7 @@ html {
 }
 
 .mainContainer {
-  text-align: center;
-  vertical-align: center;
+ text-align: center;
   margin: auto;
   background-color: var(--backgroundColorOne);
   padding: 10px;
@@ -39,25 +38,6 @@ html {
   background-color: var(--backgroundColorOneDark);
 }
 
-.itemContainer {
-  background-color: #aaaaaa;
-  border-radius: 10px;
-  margin-top: 0px;
-  margin-bottom: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 5px;
-  border-color: black;
-  border-style: solid;
-  border-width: 2px;
-  max-width: 75%;
-  min-width: 33%;
-  font-size: 1.2em;
-}
-
-.itemContainerDark {
-  background-color: #6a6a6a
-}
 p {
   margin-top: 6px;
   margin-bottom: 4px;
@@ -80,9 +60,41 @@ p {
 }
 
 .ideaInput {
-  display: inline-block;
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
   margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+.ideaEntryFields {
+  display: flex;
+  flex-direction: column;  
+  align-items: flex-start;
+  
+}
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #aaaaaa;
+  border-radius: 10px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4px 30px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 1.2em;
+  text-align: left;
+}
+
+.itemContainerDark {
+  background-color: #6a6a6a
 }
 
 .archiveHeading {
@@ -169,12 +181,12 @@ button {
   border-radius: 5px;
   border-color: black;
   border-width: 2px;
-  margin-left: 10px;
   margin-bottom: 5px;
   padding: 5px 10px;
   box-shadow: 0 4px; black;
   display: inline-block;
   font-size: 14px;
+  margin-left: 10px;
 }
 
 button:active {
@@ -189,8 +201,7 @@ button:active {
   border-width: 3px;
   border-radius: 5px;
   height: 1.5em;
-  display: inline-block;
-  margin: 0px auto 20px auto;
+  margin-bottom: 10px;
 }
 
 .inputStyleDark {
@@ -276,7 +287,7 @@ hr {
   font-size: 18px;
   color: moccasin;
   margin-bottom: 5px;
-  margin-left: -50px;
+  
 }
 
 .hintTextDark {
@@ -287,7 +298,6 @@ hr {
   font-size: 18px;
   color: chocolate;
   margin-bottom: 5px;
-  margin-left: -50px;
 
 }
 

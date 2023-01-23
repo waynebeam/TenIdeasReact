@@ -132,6 +132,7 @@ export function IdeasList() {
               className={darkMode? "hintAnim hintText hintTextDark" 
               : "hintAnim hintTextTopic"}>{hintTexts[0]}</p>
             }
+            <div>
             <input
               className={inputStyle}
               placeholder="Today's Topic: 10..."
@@ -139,14 +140,16 @@ export function IdeasList() {
               onKeyPress={handleKeyPress}
               autoFocus />
             <button onClick={() => saveTopic()}>Begin!</button>
+            </div>
             <CountIcon index={0} darkMode={darkMode}></CountIcon>
           </div>)
       }
-      <div>
+      <div className={"ideaEntryFields"}>
       {
         ideas.map((idea, i) => {
           return (
             i === ideas.length - 1 ?
+            <div className={"ideaInput"}>
               <IdeaInput
                 darkMode={darkMode}
                 inputStyle={inputStyle}
@@ -158,9 +161,10 @@ export function IdeasList() {
                 index={i}
                 hintText={archiveIdeas.length? null : hintTexts[i+1]}
               />
+            </div>
               :
-            <div className={itemContainerStyle} 
-              key={i}>
+            <div  className={itemContainerStyle}
+              key={i}>             
               <p>{idea.idea}</p>
               <CountIcon index={i+1} darkMode={darkMode}></CountIcon>
               </div>
