@@ -275,9 +275,8 @@ hr {
 .hintText {
   font-size: 18px;
   color: moccasin;
-  text-align: left;
   margin-bottom: 5px;
-  margin-left: 5px;
+  margin-left: -50px;
 }
 
 .hintTextDark {
@@ -287,9 +286,8 @@ hr {
 .hintTextTopic {
   font-size: 18px;
   color: chocolate;
-  text-align: left;
   margin-bottom: 5px;
-  margin-left: 5px;
+  margin-left: -50px;
 
 }
 

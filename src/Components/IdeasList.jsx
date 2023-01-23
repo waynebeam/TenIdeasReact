@@ -22,9 +22,9 @@ export function IdeasList() {
   const blankIdea = {idea: "", favorite: false, topic: topic, date: new Date(), id: crypto.randomUUID() };
 
   const hintTexts = [
-    "Come up with a topic \u2193 \u2193",
-    `Now think an idea for "${topic} \u2193 \u2193"`,
-    "Now come up with a second idea \u2193 \u2193",
+    "Pick a topic \u2193 \u2193",
+    `Next an idea for "${topic}" \u2193 \u2193`,
+    "Now a second idea \u2193 \u2193",
     "Now think of idea number 3 \u2193 \u2193",
     "...and 4 \u2193 \u2193",
     "and so on... \u2193 \u2193",
