@@ -49,6 +49,7 @@ let headingStyle = "archiveHeading listHeading";
     if(confirm("Delete these ideas?")){
     let newArchive = archiveIdeas.filter(idea => idea.topic !== topic);
     saveArchive(newArchive);
+    setActionSheetIndex(null);
     }
   }
 
