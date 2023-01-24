@@ -122,7 +122,7 @@ p {
 }
 
 .inputAnim {
-  animation: inputs 1s ease-out;
+  animation: inputs .5s ease-out;
 }
 
 .isFinished {

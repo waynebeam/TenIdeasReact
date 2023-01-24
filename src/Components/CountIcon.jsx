@@ -9,7 +9,7 @@ export const CountIcon = ({ index, darkMode }) => {
       if(currIndex<index){
         setCurrIndex(currIndex+1);
       }
-    },250)
+    },200)
   },[currIndex]) 
     
   let colorTwo = darkMode? "gray" : "white";

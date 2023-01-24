@@ -110,6 +110,7 @@ export function IdeasList() {
 
         const gain = audioContext.createGain();
         gain.connect(audioContext.destination);
+        gain.gain.value = 0.4;
         let oscillator = audioContext.createOscillator();
         oscillator.connect(gain);
         oscillator.frequency.value = noteValues[note];
