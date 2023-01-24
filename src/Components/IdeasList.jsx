@@ -22,6 +22,7 @@ export function IdeasList() {
   const [archiveIdeas, setArchiveIdeas] = useState(loadArchive());
   const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode"));
   const [isMuted, setIsMuted] = useState(localStorage.getItem("isMuted"));
+  const [isFinished, setIsFinished] = useState(false);
   const blankIdea = { idea: "", favorite: false, topic: topic, date: new Date(), id: crypto.randomUUID() };
 
   const hintTexts = [
@@ -83,14 +84,17 @@ export function IdeasList() {
       return;
     }
     if (count === 10 && ideas[count - 1].idea) {
-
-      let newArchive = [...ideas];
-      if (archiveIdeas) { newArchive.push(...archiveIdeas) }
-      saveArchive(newArchive);
-      setIdeas([]);
-      setTopic("");
-      setTopicSet(false);
       playSound(count);
+      setIsFinished(true);
+      setTimeout(() => {
+        let newArchive = [...ideas];
+        if (archiveIdeas) { newArchive.push(...archiveIdeas) }
+        saveArchive(newArchive);
+        setIdeas([]);
+        setTopic("");
+        setTopicSet(false);
+        setIsFinished(false);
+      }, 1500);
     }
   }
 
@@ -142,14 +146,12 @@ export function IdeasList() {
 
   }
 
-  function handleIsMuted()
-    {
-      if(isMuted)
-      {
+  function handleIsMuted() {
+    if (isMuted) {
       setIsMuted("");
-      }
-      else setIsMuted("true");
     }
+    else setIsMuted("true");
+  }
 
   function toggleFavorite(toggledidea) {
     let index = archiveIdeas.findIndex(idea => idea === toggledidea);
@@ -170,9 +172,9 @@ export function IdeasList() {
 
   return (
     <div className={mainContainerStyle}>
-      
-      <h1 className={topicSet? listHeadingStyle + headingAnimStyle: listHeadingStyle}><span className={"ten"}>Ten</span> {(topicSet ? topic : "Ideas a Day")}
-        <button 
+
+      <h1 className={topicSet ? listHeadingStyle + headingAnimStyle : listHeadingStyle}><span className={"ten"}>Ten</span> {(topicSet ? topic : "Ideas a Day")}
+        <button
           onClick={() => handleHelp()}
           style={{ float: "right" }}>❓</button>
         <button
@@ -181,7 +183,7 @@ export function IdeasList() {
         <button
           onClick={handleIsMuted}
           style={{ float: "right" }}>
-          {isMuted? "🔇" : "🔉"}
+          {isMuted ? "🔇" : "🔉"}
         </button>
       </h1>
 
@@ -230,8 +232,15 @@ export function IdeasList() {
                   <p>{idea.idea}</p>
                   <CountIcon index={i + 1} darkMode={darkMode}></CountIcon>
                 </div>
+              
             )
           })
+        }
+        {
+          isFinished && 
+        <div className={"isFinished"}>
+          <h1><span className={"ten"}>Ten</span> ideas saved! Nicely Done!</h1>
+        </div>
         }
       </div>
 

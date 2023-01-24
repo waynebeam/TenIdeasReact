@@ -125,6 +125,20 @@ p {
   animation: inputs .5s ease-out;
 }
 
+.isFinished {
+  align-self: center;
+  position: relative;
+  animation: isFinishedAnim .8s ease-in-out;
+}
+
+@keyframes isFinishedAnim {
+  0% {top: -15px;}
+  25% {top: 15px;}
+  50% {top: -10px;}
+  75% {top: 8px;}
+  100% {top:0px;}
+}
+
 @keyframes items {
   0% {top: -5px;}
   25% {top: 5px;}
