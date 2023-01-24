@@ -1,7 +1,7 @@
 import {CountIcon} from './CountIcon'
 
 export function IdeaInput(props) {
-  let itemContainerStyle = "itemContainer";
+  let itemContainerStyle = "itemContainer inputAnim";
   let inputStyle = props.inputStyle;
     if(props.darkMode){ 
       itemContainerStyle += " itemContainerDark";

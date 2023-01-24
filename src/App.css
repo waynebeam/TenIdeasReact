@@ -110,10 +110,33 @@ p {
   border-width: 2px;
   font-size: 1.2em;
   text-align: left;
+  position:relative;
 }
 
 .itemContainerDark {
   background-color: #6a6a6a
+}
+
+.itemAnim {
+  animation: items .5s ease-in-out;
+}
+
+.inputAnim {
+  animation: inputs .5s ease-out;
+}
+
+@keyframes items {
+  0% {top: -5px;}
+  25% {top: 5px;}
+  50% {top: -2px;}
+  75% {top: 1px;}
+  100% {top:0px;}
+}
+
+@keyframes inputs {
+  0% {top: 3px;}
+  50% {top: -1px;}
+  100% {top:0px;}
 }
 
 .archiveHeading {

@@ -57,7 +57,7 @@ export function IdeasList() {
   let mainContainerStyle = "mainContainer";
   let listHeadingStyle = "listHeading";
   let inputStyle = "inputStyle";
-  let itemContainerStyle = "itemContainer";
+  let itemContainerStyle = "itemContainer itemAnim";
   let headingAnimStyle = " headingAnim";
   if (darkMode) {
     mainContainerStyle += " mainContainerDark";
