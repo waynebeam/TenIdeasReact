@@ -74,27 +74,30 @@ export function IdeasList() {
     newIdeas[ideas.length - 1].idea = value.target.value;
     setIdeas(newIdeas);
   }
+
   function addIdea() {
-    let count = ideas.length;
-    if (count < 10 && ideas[count - 1].idea) {
-      let newIdeas = [...ideas, blankIdea,];
-      blankIdea.id = crypto.randomUUID();
-      setIdeas(newIdeas);
-      playSound(count);
-      return;
-    }
-    if (count === 10 && ideas[count - 1].idea) {
-      playSound(count);
-      setIsFinished(true);
-      setTimeout(() => {
-        let newArchive = [...ideas];
-        if (archiveIdeas) { newArchive.push(...archiveIdeas) }
-        saveArchive(newArchive);
-        setIdeas([]);
-        setTopic("");
-        setTopicSet(false);
-        setIsFinished(false);
-      }, 1500);
+    if (!isFinished) {
+      let count = ideas.length;
+      if (count < 10 && ideas[count - 1].idea) {
+        let newIdeas = [...ideas, blankIdea,];
+        blankIdea.id = crypto.randomUUID();
+        setIdeas(newIdeas);
+        playSound(count);
+        return;
+      }
+      if (count === 10 && ideas[count - 1].idea) {
+        playSound(count);
+        setIsFinished(true);
+        setTimeout(() => {
+          let newArchive = [...ideas];
+          if (archiveIdeas) { newArchive.push(...archiveIdeas) }
+          saveArchive(newArchive);
+          setIdeas([]);
+          setTopic("");
+          setTopicSet(false);
+          setIsFinished(false);
+        }, 2500);
+      }
     }
   }
 
@@ -212,9 +215,9 @@ export function IdeasList() {
         {
           ideas.map((idea, i) => {
             return (
-              i === ideas.length - 1 ?
+              i === ideas.length - 1 && !isFinished ?
                 <div key={idea.id}
-                  className={"ideaInput"}>
+                  className={isFinished ? "ideaInput isFinished" : "ideaInput"}>
                   <IdeaInput
                     darkMode={darkMode}
                     inputStyle={inputStyle}
@@ -227,20 +230,20 @@ export function IdeasList() {
                   />
                 </div>
                 :
-                <div className={itemContainerStyle}
+                <div className={isFinished ? itemContainerStyle + " isFinished" : itemContainerStyle}
                   key={idea.id}>
                   <p>{idea.idea}</p>
                   <CountIcon index={i + 1} darkMode={darkMode}></CountIcon>
                 </div>
-              
+
             )
           })
         }
         {
-          isFinished && 
-        <div className={"isFinished"}>
-          <h1><span className={"ten"}>Ten</span> ideas saved! Nicely Done!</h1>
-        </div>
+          isFinished &&
+          <div className={"isFinished"}>
+            <h1><span className={"ten"}>Ten</span> ideas saved! Nicely Done!</h1>
+          </div>
         }
       </div>
 

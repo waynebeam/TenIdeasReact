@@ -126,17 +126,16 @@ p {
 }
 
 .isFinished {
-  align-self: center;
   position: relative;
-  animation: isFinishedAnim .8s ease-in-out;
+  animation: isFinishedAnim 1s ease-in-out forwards;
 }
 
 @keyframes isFinishedAnim {
-  0% {top: -15px;}
-  25% {top: 15px;}
-  50% {top: -10px;}
+  0% {top: -15px; color: black;}
+  25% {top: 15px; }
+  50% {top: -10px; }
   75% {top: 8px;}
-  100% {top:0px;}
+  100% {top:0px;  color: darkgoldenrod;}
 }
 
 @keyframes items {
