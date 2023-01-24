@@ -198,7 +198,7 @@ let headingStyle = "archiveHeading listHeading";
       {
         archiveCards().map((ideas, i) => 
           <ArchiveCard 
-          key={crypto.randomUUID()}
+          key={i}
           archiveIdeas={ideas}
           darkMode={darkMode}
           colorSwap={i % 2 === 0 ? true : false}

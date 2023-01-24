@@ -37,17 +37,17 @@ export function IdeasList() {
   ];
 
   const ideaSoundScale = [
-    "C2",
-    "C3",
-    "D3",
-    "E3",
-    "F3",
-    "G3",
-    "A3",
-    "B3",
-    "C4",
-    "B4",
-    "C5"
+    ["G3", "B3", "D3", "F3"],
+    ["C3", "C4"],
+    ["D3", "D4"],
+    ["E3", "E4"],
+    ["F3", "F4"],
+    ["G3", "G4"],
+    ["A3", "A4"],
+    ["B3","B4"],
+    ["F4", "B4", "D4", "B3"],
+    ["G4", "B4", "D4","F4", "G3", "B3", "F3"],
+    ["C5", "C4", "C3", "G4", "E4"]
   ]
   
   localStorage.setItem("darkMode",darkMode);
@@ -91,16 +91,21 @@ export function IdeasList() {
 
   function playSound(index){
     const audioContext = new AudioContext();
-    const oscillator = audioContext.createOscillator();
-    const gain = audioContext.createGain();
-    oscillator.connect(gain);
+    
+    ideaSoundScale[index].forEach(note => {
+          const duration = 1;
+
+      const gain = audioContext.createGain();
     gain.connect(audioContext.destination);
-    const duration = 1;
-    const frequency = noteValues[ideaSoundScale[index]];
-    oscillator.frequency.value = frequency;
-    oscillator.start();
-    oscillator.stop(duration);
-    gain.gain.exponentialRampToValueAtTime(.00001, audioContext.currentTime + duration);
+      let oscillator = audioContext.createOscillator();
+      oscillator.connect(gain);
+      oscillator.frequency.value = noteValues[note];
+      oscillator.start();
+      oscillator.stop(duration);
+       gain.gain.exponentialRampToValueAtTime(.00001, audioContext.currentTime + duration);
+    })
+    
+   
   }
 
   function saveArchive(archive) {
