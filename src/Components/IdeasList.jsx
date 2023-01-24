@@ -14,6 +14,7 @@ function loadArchive() {
 }
 
 
+
 export function IdeasList() {
   const [topic, setTopic] = useState("");
   const [topicSet, setTopicSet] = useState(false);
@@ -141,7 +142,11 @@ export function IdeasList() {
 
   function handleIsMuted()
     {
-      setIsMuted(!isMuted);
+      if(isMuted)
+      {
+      setIsMuted("");
+      }
+      else setIsMuted("true");
     }
 
   function toggleFavorite(toggledidea) {
