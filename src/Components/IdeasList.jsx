@@ -58,11 +58,13 @@ export function IdeasList() {
   let listHeadingStyle = "listHeading";
   let inputStyle = "inputStyle";
   let itemContainerStyle = "itemContainer";
+  let headingAnimStyle = " headingAnim";
   if (darkMode) {
     mainContainerStyle += " mainContainerDark";
     listHeadingStyle += " listHeadingDark"
     inputStyle += " inputStyleDark";
     itemContainerStyle += " itemContainerDark";
+    headingAnimStyle = " headingAnimDark";
   }
 
 
@@ -168,7 +170,8 @@ export function IdeasList() {
 
   return (
     <div className={mainContainerStyle}>
-      <h1 className={listHeadingStyle}><span className={"ten"}>Ten</span> {(topicSet ? topic : "Ideas a Day")}
+      
+      <h1 className={topicSet? listHeadingStyle + headingAnimStyle: listHeadingStyle}><span className={"ten"}>Ten</span> {(topicSet ? topic : "Ideas a Day")}
         <button 
           onClick={() => handleHelp()}
           style={{ float: "right" }}>❓</button>

@@ -57,6 +57,23 @@ p {
   color: var(--darkAccentColorDark);
 }
 
+@keyframes heading {
+  0% {color: chocolate;}
+  100% {color: var(--darkAccentColor);}
+}
+
+@keyframes headingDark {
+  0% {color: gold;}
+  100% {color: var(--darkAccentColorDark);}
+}
+
+.headingAnim {
+  animation: heading 1.5s ease-out forwards;
+}
+.headingAnimDark {
+  animation: headingDark 1.5s ease-out forwards;
+}
+
 .ten {
   color: var(--accentColor);
 }
