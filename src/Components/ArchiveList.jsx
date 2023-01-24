@@ -196,7 +196,9 @@ let headingStyle = "archiveHeading listHeading";
       }
     <div className={"container"}>
       {
-        archiveCards().map((ideas, i) => <ArchiveCard key={i}
+        archiveCards().map((ideas, i) => 
+          <ArchiveCard 
+          key={crypto.randomUUID()}
           archiveIdeas={ideas}
           darkMode={darkMode}
           colorSwap={i % 2 === 0 ? true : false}
@@ -205,6 +207,7 @@ let headingStyle = "archiveHeading listHeading";
           actionSheetIndex={actionSheetIndex}  
           index={i}
           toggleActionSheet={()=>toggleActionSheet(i)}
+
         />)
       }
     </div>

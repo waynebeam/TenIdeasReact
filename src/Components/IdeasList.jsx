@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import {CountIcon} from "./CountIcon"
 import {ArchiveList} from './ArchiveList'
 import {IdeaInput} from './IdeaInput'
+import {noteValues} from '../Notes'
 
 function loadArchive() {
 let archive = JSON.parse(localStorage.getItem("archiveIdeas"))
@@ -34,6 +35,21 @@ export function IdeasList() {
     "Number 9, \u2193 \u2193",
     "Last one, number 10! \u2193 \u2193"
   ];
+
+  const ideaSoundScale = [
+    "C2",
+    "C3",
+    "D3",
+    "E3",
+    "F3",
+    "G3",
+    "A3",
+    "B3",
+    "C4",
+    "B4",
+    "C5"
+  ]
+  
   localStorage.setItem("darkMode",darkMode);
   let mainContainerStyle = "mainContainer";
   let listHeadingStyle = "listHeading";
@@ -56,7 +72,9 @@ export function IdeasList() {
     let count = ideas.length;
     if (count < 10 && ideas[count - 1].idea) {
       let newIdeas = [...ideas, blankIdea,];
+      blankIdea.id = crypto.randomUUID();
       setIdeas(newIdeas);
+     playSound(count);
       return;
     }
     if (count === 10 && ideas[count - 1].idea) {
@@ -67,7 +85,22 @@ export function IdeasList() {
       setIdeas([]);
       setTopic("");
       setTopicSet(false);
+      playSound(count);
     }
+  }
+
+  function playSound(index){
+    const audioContext = new AudioContext();
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+    const duration = 1;
+    const frequency = noteValues[ideaSoundScale[index]];
+    oscillator.frequency.value = frequency;
+    oscillator.start();
+    oscillator.stop(duration);
+    gain.gain.exponentialRampToValueAtTime(.00001, audioContext.currentTime + duration);
   }
 
   function saveArchive(archive) {
@@ -80,6 +113,7 @@ export function IdeasList() {
       blankIdea.date = new Date();
       setIdeas([blankIdea]);
       setTopicSet(true);  
+      playSound(0);
     }
   }
 
@@ -149,11 +183,11 @@ export function IdeasList() {
         ideas.map((idea, i) => {
           return (
             i === ideas.length - 1 ?
-            <div className={"ideaInput"}>
+            <div                 key={idea.id}
+className={"ideaInput"}>
               <IdeaInput
                 darkMode={darkMode}
                 inputStyle={inputStyle}
-                key={idea.id}
                 onChange={(v) => updateIdeas(v)}
                 value={idea.idea}
                 addIdea={() => addIdea()}
