@@ -121,7 +121,7 @@ let headingStyle = "archiveHeading listHeading";
     
     for(let i in word){
       let chooser = Math.random() < 0.5;
-      text.push(<span style={{color: chooser ? "darkgoldenrod" : ""}}>{word[i]}</span>)
+      text.push(<span key={crypto.randomUUID()} style={{color: chooser ? "darkgoldenrod" : ""}}>{word[i]}</span>)
     }
     return text;
   }
@@ -162,6 +162,7 @@ let headingStyle = "archiveHeading listHeading";
               {showFavorites ? <span>Viewing: <span style={{color: "darkgoldenrod"}}>Favorites</span></span> : "Viewing: All"}</button>
               </div>
                 }
+            
             {
             
               showRandomIdea ? 
@@ -188,6 +189,7 @@ let headingStyle = "archiveHeading listHeading";
               }</button>
             }
             
+            
           </div>
           :
           <p className={spanStyle + " descriptionText"}>
@@ -198,7 +200,7 @@ let headingStyle = "archiveHeading listHeading";
       {
         archiveCards().map((ideas, i) => 
           <ArchiveCard 
-          key={i}
+          key={crypto.randomUUID()}
           archiveIdeas={ideas}
           darkMode={darkMode}
           colorSwap={i % 2 === 0 ? true : false}

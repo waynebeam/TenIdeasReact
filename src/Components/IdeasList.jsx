@@ -203,7 +203,7 @@ className={"ideaInput"}>
             </div>
               :
             <div  className={itemContainerStyle}
-              key={i}>             
+              key={idea.id}>             
               <p>{idea.idea}</p>
               <CountIcon index={i+1} darkMode={darkMode}></CountIcon>
               </div>
