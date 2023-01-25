@@ -9,7 +9,7 @@ function loadArchive() {
   return archive ??= [];
 }
 
-function loadIsMuted(){
+function loadIsMuted() {
   const isMuted = localStorage.getItem("isMuted");
   return isMuted ??= "false";
 }
@@ -20,6 +20,7 @@ export function IdeasList() {
   const [topic, setTopic] = useState("");
   const [topicSet, setTopicSet] = useState(false);
   const [ideas, setIdeas] = useState([]);
+  const [ideaIndex, setIdeaIndex] = useState(0);
   const [archiveIdeas, setArchiveIdeas] = useState(loadArchive());
   const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode"));
   const [isMuted, setIsMuted] = useState(loadIsMuted());
@@ -70,34 +71,46 @@ export function IdeasList() {
   }
 
 
-  function updateIdeas(value) {
+  function updateIdeas(value, index) {
     let newIdeas = [...ideas];
-    newIdeas[ideas.length - 1].idea = value.target.value;
+    newIdeas[index].idea = value.target.value;
     setIdeas(newIdeas);
   }
 
-  function addIdea() {
+  function addIdea(index) {
     if (!isFinished) {
       let count = ideas.length;
-      if (count < 10 && ideas[count - 1].idea) {
-        let newIdeas = [...ideas, blankIdea,];
-        blankIdea.id = crypto.randomUUID();
+      if (count < 10 && ideas[index].idea) {
+        let newIdeas = [...ideas];
+        if (newIdeas[count - 1].idea) {
+          blankIdea.id = crypto.randomUUID();
+          newIdeas.push(blankIdea)
+        }
         setIdeas(newIdeas);
         playSound(count);
+        setIdeaIndex(newIdeas.length - 1);
         return;
       }
-      if (count === 10 && ideas[count - 1].idea) {
-        playSound(count);
-        setIsFinished(true);
-        setTimeout(() => {
-          let newArchive = [...ideas];
-          if (archiveIdeas) { newArchive.push(...archiveIdeas) }
-          saveArchive(newArchive);
-          setIdeas([]);
-          setTopic("");
-          setTopicSet(false);
-          setIsFinished(false);
-        }, 2500);
+      if (count === 10) {
+        if (ideaIndex !== 9) {
+          setIdeaIndex(9);
+          playSound(9);
+          return;
+        }
+        if (ideas[count - 1].idea) {
+          playSound(count);
+          setIsFinished(true);
+          setTimeout(() => {
+            let newArchive = [...ideas];
+            if (archiveIdeas) { newArchive.push(...archiveIdeas) }
+            saveArchive(newArchive);
+            setIdeas([]);
+            setTopic("");
+            setTopicSet(false);
+            setIsFinished(false);
+            setIdeaIndex(0);
+          }, 2500);
+        }
       }
     }
   }
@@ -121,6 +134,14 @@ export function IdeasList() {
       })
     }
 
+  }
+
+  function makeIdeaEditable(index){
+    setIdeaIndex(index);
+    let count = ideas.length;
+    let newIdeas = ideas[count-1].idea ? ideas : ideas.slice(0,count-1);
+    setIdeas(newIdeas);
+    
   }
 
   function saveArchive(archive) {
@@ -217,23 +238,25 @@ export function IdeasList() {
         {
           ideas.map((idea, i) => {
             return (
-              i === ideas.length - 1 && !isFinished ?
+              i === ideaIndex && !isFinished ?
                 <div key={idea.id}
                   className={isFinished ? "ideaInput isFinished" : "ideaInput"}>
                   <IdeaInput
                     darkMode={darkMode}
                     inputStyle={inputStyle}
-                    onChange={(v) => updateIdeas(v)}
+                    onChange={(v) => updateIdeas(v, i)}
                     value={idea.idea}
-                    addIdea={() => addIdea()}
-                    latest={i === ideas.length - 1}
+                    addIdea={() => addIdea(i)}
+                    latest={i === ideaIndex}
                     index={i}
                     hintText={archiveIdeas.length ? null : hintTexts[i + 1]}
                   />
                 </div>
                 :
                 <div className={isFinished ? itemContainerStyle + " isFinished" : itemContainerStyle}
-                  key={idea.id}>
+                  key={idea.id}
+                  onClick={() => makeIdeaEditable(i)}
+                >
                   <p>{idea.idea}</p>
                   <CountIcon index={i + 1} darkMode={darkMode}></CountIcon>
                 </div>

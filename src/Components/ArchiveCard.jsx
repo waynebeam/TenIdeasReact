@@ -35,7 +35,7 @@ let date;
   
   
   return (
-    <div>
+    <div className={"entireArchiveCard"}>
     <div onClick={toggleActionSheet}>
       <h2 className={headingStyle} 
         
