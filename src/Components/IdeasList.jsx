@@ -6,11 +6,12 @@ import { noteValues } from '../Notes'
 
 function loadArchive() {
   let archive = JSON.parse(localStorage.getItem("archiveIdeas"))
-  if (archive) {
-    return archive
-  } else {
-    return []
-  }
+  return archive ??= [];
+}
+
+function loadIsMuted(){
+  const isMuted = localStorage.getItem("isMuted");
+  return isMuted ??= "false";
 }
 
 
@@ -21,7 +22,7 @@ export function IdeasList() {
   const [ideas, setIdeas] = useState([]);
   const [archiveIdeas, setArchiveIdeas] = useState(loadArchive());
   const [darkMode, setDarkMode] = useState(localStorage.getItem("darkMode"));
-  const [isMuted, setIsMuted] = useState(localStorage.getItem("isMuted"));
+  const [isMuted, setIsMuted] = useState(loadIsMuted());
   const [isFinished, setIsFinished] = useState(false);
   const blankIdea = { idea: "", favorite: false, topic: topic, date: new Date(), id: crypto.randomUUID() };
 
