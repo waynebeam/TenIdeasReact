@@ -2,8 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 
-export const CountIcon = ({ index, darkMode }) => {
-  const [currIndex, setCurrIndex] = useState(0);
+export const CountIcon = ({ index, darkMode, isAnimated=true }) => {
+  const [currIndex, setCurrIndex] = useState(isAnimated ? 0 : index);
   useEffect(()=>{
     setTimeout(()=>{
       if(currIndex<index){

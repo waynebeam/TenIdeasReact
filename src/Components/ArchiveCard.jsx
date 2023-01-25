@@ -61,7 +61,7 @@ let date;
                 checked={idea.favorite}
                 
               />
-              <CountIcon index={i+1} darkMode={darkMode}></CountIcon>
+              <CountIcon index={i+1} darkMode={darkMode} isAnimated={false}></CountIcon>
               <hr />
              
             </div>
