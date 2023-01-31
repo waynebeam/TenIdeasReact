@@ -1,5 +1,6 @@
 import { ArchiveCard } from "./ArchiveCard";
 import { useState } from 'react';
+import {PageButtons} from './PageButtons';
 
 export const ArchiveList = ({archiveIdeas, toggleFavorite, clearArchive, saveArchive, darkMode, inputStyle}) => {
   const [showFavorites, setShowFavorites] = useState(false);
@@ -143,10 +144,10 @@ export const ArchiveList = ({archiveIdeas, toggleFavorite, clearArchive, saveArc
 
       {
         archiveIdeas.length > 0 ?
-          <div>
+          <div className="archiveControlButtonsContainer">
             {
               !showRandomIdea &&
-              <div>
+              <div className="archiveControlButtons">
             <input 
               className={inputStyle}
              
@@ -156,23 +157,22 @@ export const ArchiveList = ({archiveIdeas, toggleFavorite, clearArchive, saveArc
               />
                 {
               filterText && !showRandomIdea &&
-            <button style={{display: "inline-block"}}
+            <button
               onClick={() => setFilterText("")}>❌</button>
             }
             <button
+              className="archiveButton"
               onClick={() => {
                 setShowFavorites(!showFavorites)}}
-              style={{display: 'block', margin: '10px auto'}}>
+              >
               {showFavorites ? <span>Viewing: <span style={{color: "darkgoldenrod"}}>Favorites</span></span> : "Viewing: All"}</button>
-              </div>
-                }
-            
-            {
+                
+
+                {
             
               showRandomIdea ? 
               <div className={"randomButtons"}>
               <button onClick={()=>{
-                setShowRandomIdea(true)
               setFilterText(crypto.randomUUID())}
               }>↺</button>
               <button onClick={()=>{
@@ -183,6 +183,7 @@ export const ArchiveList = ({archiveIdeas, toggleFavorite, clearArchive, saveArc
               </div>
               :
             !showFavorites && <button
+              className="archiveButton"
               onClick={() => {
                 setFilterText("");
                 setShowRandomIdea(true);
@@ -192,17 +193,20 @@ export const ArchiveList = ({archiveIdeas, toggleFavorite, clearArchive, saveArc
                 randomDesign()
               }</button>
             }
-            
-            
+              </div>
+                }
+   
           </div>
           :
           <p className={spanStyle + " descriptionText"}>
             Choose a topic, and write <span className={"number"}>10</span> ideas related to it. Each group of <span className={"number"}>10</span> ideas is saved here in the archive. Try to come up with at least <span className={"number"}>10</span> ideas a day, every day. Consecutive days count toward a streak. No judgment. Any idea will do.  
           </p>
       }
+            
+    <PageButtons />
+
     <div className={"container"}>
 
-      {/* the top page buttons will go here */}
       
       {
         generateArchiveCards().map((ideas, i) => 
