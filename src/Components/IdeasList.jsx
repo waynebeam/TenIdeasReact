@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { CountIcon } from "./CountIcon"
 import { ArchiveList } from './ArchiveList'
 import { IdeaInput } from './IdeaInput'
@@ -27,6 +27,8 @@ export function IdeasList() {
   const [isFinished, setIsFinished] = useState(false);
   const blankIdea = { idea: "", favorite: false, topic: topic, date: new Date(), id: crypto.randomUUID() };
 
+
+  
   const hintTexts = [
     "Pick a topic \u2193 \u2193",
     `Next an idea for "${topic}" \u2193 \u2193`,
@@ -70,6 +72,9 @@ export function IdeasList() {
     headingAnimStyle = " headingAnimDark";
   }
 
+  function scrollTo(ref){
+    ref.current.scrollIntoView();
+  }
 
   function updateIdeas(value, index) {
     let newIdeas = [...ideas];
@@ -193,6 +198,7 @@ export function IdeasList() {
     }
   }
 
+  
   const handleHelp = () =>
     alert('An idea tracker by waynebeam.net. Write TEN ideas a day EVERY day to exercise your possibility muscle. Inspired by the book "Skip the Line" by James Altucher');
 
@@ -272,13 +278,13 @@ export function IdeasList() {
         }
       </div>
 
-      <ArchiveList
-        darkMode={darkMode}
-        inputStyle={inputStyle}
-        archiveIdeas={archiveIdeas ? archiveIdeas : []}
-        toggleFavorite={toggleFavorite}
-        clearArchive={clearArchive}
-        saveArchive={(archive) => saveArchive(archive)} />
+        <ArchiveList
+          darkMode={darkMode}
+          inputStyle={inputStyle}
+          archiveIdeas={archiveIdeas ? archiveIdeas : []}
+          toggleFavorite={toggleFavorite}
+          clearArchive={clearArchive}
+          saveArchive={(archive) => saveArchive(archive)}/>
     </div>
   )
 }

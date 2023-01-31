@@ -376,6 +376,13 @@ hr {
   margin-top: 10px;
 }
 
+.pageButtonsContainer button {
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px 15px;
+}
+
 .archiveControlButtons {
   display: flex;
   flex-direction: column;

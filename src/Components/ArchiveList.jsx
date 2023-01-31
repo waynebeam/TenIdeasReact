@@ -1,14 +1,16 @@
 import { ArchiveCard } from "./ArchiveCard";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { PageButtons } from './PageButtons';
 
-export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveArchive, darkMode, inputStyle }) => {
+export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveArchive, darkMode, inputStyle}) => {
   const [showFavorites, setShowFavorites] = useState(false);
   const [filterText, setFilterText] = useState("");
   const [actionSheetIndex, setActionSheetIndex] = useState(null);
   const [showRandomIdea, setShowRandomIdea] = useState(false);
   const [archiveStartingIndex, setArchiveStartingIndex] = useState(0);
 
+  const screenTop = useRef();
+  
   let cardsPerPage = 10;
   let archiveCards = generateArchiveCards();
   let headingStyle = "archiveHeading listHeading";
@@ -162,7 +164,7 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
       {
         archiveIdeas.length > 0 &&
         <div>
-          <h2 className={headingStyle}>Idea Archive:</h2>
+          <h2 ref={screenTop} className={headingStyle}>Idea Archive:</h2>
 
           <div className={spanStyle}>{calculateStreak()} | <span className={"number"}>{archiveIdeas.length}</span> ideas saved!</div>
         </div>
@@ -260,10 +262,10 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
 
         {archiveCards.length > cardsPerPage &&
           <PageButtons
-          nextPage={nextPage}
-          prevPage={prevPage}
-          firstPage={firstPage}
-          lastPage={lastPage}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            firstPage={firstPage}
+            lastPage={lastPage}
           />
         }
       </div>
