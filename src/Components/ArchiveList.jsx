@@ -6,15 +6,17 @@ export const ArchiveList = ({archiveIdeas, toggleFavorite, clearArchive, saveArc
   const [filterText, setFilterText] = useState("");
   const [actionSheetIndex, setActionSheetIndex] = useState(null);
   const [showRandomIdea, setShowRandomIdea] = useState(false);
+  const [archiveStartingIndex, setArchiveStartingIndex] = useState(0);
 
-let headingStyle = "archiveHeading listHeading";
+  let cardsPerPage = 10;
+  let headingStyle = "archiveHeading listHeading";
   let spanStyle = "spanStyle";
   if(darkMode){
     headingStyle += " archiveHeadingDark listHeadingDark";
     spanStyle += " spanStyleDark";
   }
   
-  const archiveCards = () => {
+  function generateArchiveCards() {
     let listOfCards = [];
     let listOfIdeas = [];
     let prevIdea = { topic: "" };
@@ -42,7 +44,8 @@ let headingStyle = "archiveHeading listHeading";
       prevIdea = idea;
     })
     listOfCards.push(listOfIdeas);
-    return listOfCards;
+    
+    return listOfCards.slice(archiveStartingIndex, archiveStartingIndex + cardsPerPage);
   }
 
   const deleteCard = (topic) => {
@@ -198,8 +201,11 @@ let headingStyle = "archiveHeading listHeading";
           </p>
       }
     <div className={"container"}>
+
+      {/* the top page buttons will go here */}
+      
       {
-        archiveCards().map((ideas, i) => 
+        generateArchiveCards().map((ideas, i) => 
           <ArchiveCard 
           key={crypto.randomUUID()}
           archiveIdeas={ideas}
@@ -213,6 +219,9 @@ let headingStyle = "archiveHeading listHeading";
 
         />)
       }
+      
+      {/* the botom page buttons will go here */}
+
     </div>
       {
         archiveIdeas.length && !showRandomIdea && !showFavorites ?

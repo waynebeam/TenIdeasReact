@@ -10,7 +10,7 @@ function loadArchive() {
 }
 
 function loadIsMuted() {
-  const isMuted = localStorage.getItem("isMuted");
+  let isMuted = localStorage.getItem("isMuted");
   return isMuted ??= "false";
 }
 
