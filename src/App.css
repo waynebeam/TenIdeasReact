@@ -411,6 +411,8 @@ hr {
 
 .clearArchive {
   align-self: flex-end;
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 
 .randomButtons button {
