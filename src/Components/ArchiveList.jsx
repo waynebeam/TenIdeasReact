@@ -132,6 +132,31 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
     return text;
   }
 
+  function firstPage() {
+    setArchiveStartingIndex(0);
+  }
+
+  function lastPage() {
+    setArchiveStartingIndex(archiveCards.length - cardsPerPage)
+  }
+  
+  function nextPage(){
+    if(archiveCards.length > archiveStartingIndex + cardsPerPage)
+    {
+      setArchiveStartingIndex(archiveStartingIndex + cardsPerPage);
+    }
+  }
+
+  function prevPage(){
+    if(archiveStartingIndex>0)
+    {
+      let index = archiveStartingIndex - cardsPerPage;
+      index = index < 0 ? 0 : index;
+      setArchiveStartingIndex(index);
+    }
+  }
+
+  //return for render starts here
   return (
     <div>
       {
@@ -205,7 +230,13 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
       }
 
       {archiveCards.length > cardsPerPage &&
-        <PageButtons />
+        <PageButtons
+          nextPage={nextPage}
+          prevPage={prevPage}
+          firstPage={firstPage}
+          lastPage={lastPage}
+          />
+          
       }
 
       <div className={"container"}>
@@ -228,7 +259,12 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
         }
 
         {archiveCards.length > cardsPerPage &&
-          <PageButtons />
+          <PageButtons
+          nextPage={nextPage}
+          prevPage={prevPage}
+          firstPage={firstPage}
+          lastPage={lastPage}
+          />
         }
       </div>
       {
