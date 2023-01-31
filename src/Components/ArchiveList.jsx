@@ -146,7 +146,7 @@ export const ArchiveList = ({archiveIdeas, toggleFavorite, clearArchive, saveArc
         archiveIdeas.length > 0 ?
           <div className="archiveControlButtonsContainer">
             {
-              !showRandomIdea &&
+              !showRandomIdea ?
               <div className="archiveControlButtons">
             <input 
               className={inputStyle}
@@ -167,22 +167,7 @@ export const ArchiveList = ({archiveIdeas, toggleFavorite, clearArchive, saveArc
               >
               {showFavorites ? <span>Viewing: <span style={{color: "darkgoldenrod"}}>Favorites</span></span> : "Viewing: All"}</button>
                 
-
-                {
-            
-              showRandomIdea ? 
-              <div className={"randomButtons"}>
-              <button onClick={()=>{
-              setFilterText(crypto.randomUUID())}
-              }>↺</button>
-              <button onClick={()=>{
-                setShowRandomIdea(false)
-                setFilterText("");
-              }
-              }>❌</button>
-              </div>
-              :
-            !showFavorites && <button
+            <button
               className="archiveButton"
               onClick={() => {
                 setFilterText("");
@@ -192,10 +177,23 @@ export const ArchiveList = ({archiveIdeas, toggleFavorite, clearArchive, saveArc
               >{
                 randomDesign()
               }</button>
-            }
               </div>
-                }
-   
+              :
+              <div className="archiveControlButtons">
+                <div className={"randomButtons"}>
+              <button onClick={()=>{
+              setFilterText(crypto.randomUUID())}
+              }>↺</button>
+              <button onClick={()=>{
+                setShowRandomIdea(false)
+                setFilterText("");
+              }
+              }>❌</button>
+              </div>
+              </div>
+              
+                } {/* end of the archiveControlButtons div*/}
+     
           </div>
           :
           <p className={spanStyle + " descriptionText"}>
