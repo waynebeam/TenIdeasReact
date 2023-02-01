@@ -1,5 +1,5 @@
 import { ArchiveCard } from "./ArchiveCard";
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { PageButtons } from './PageButtons';
 
 export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveArchive, darkMode, inputStyle, scrollTo}) => {
@@ -10,6 +10,7 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
   const [archiveStartingIndex, setArchiveStartingIndex] = useState(0);
 
   const screenTop = useRef();
+  const firstRender = useRef(true);
   
   let cardsPerPage = 5;
   let archiveCards = generateArchiveCards();
@@ -20,6 +21,16 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
     spanStyle += " spanStyleDark";
   }
 
+  useEffect(()=>{
+    if(firstRender.current){
+      firstRender.current = false;
+    }
+    else
+    {
+      scrollTo(screenTop)
+    }
+  }, [archiveIdeas.length])
+  
   function generateArchiveCards() {
     let listOfCards = [];
     let listOfIdeas = [];

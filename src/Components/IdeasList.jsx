@@ -27,7 +27,6 @@ export function IdeasList() {
   const [isFinished, setIsFinished] = useState(false);
   const blankIdea = { idea: "", favorite: false, topic: topic, date: new Date(), id: crypto.randomUUID() };
 
-
   
   const hintTexts = [
     "Pick a topic \u2193 \u2193",
@@ -234,7 +233,7 @@ export function IdeasList() {
                 placeholder="Today's Topic: 10..."
                 onChange={(e) => setTopic(e.target.value)}
                 onKeyPress={handleKeyPress}
-                autoFocus />
+                />
               <button onClick={() => saveTopic()}>Begin!</button>
             </div>
             <CountIcon index={0} darkMode={darkMode}></CountIcon>
@@ -277,7 +276,7 @@ export function IdeasList() {
           </div>
         }
       </div>
-        
+        <div >
         <ArchiveList
           darkMode={darkMode}
           inputStyle={inputStyle}
@@ -286,6 +285,7 @@ export function IdeasList() {
           clearArchive={clearArchive}
           saveArchive={(archive) => saveArchive(archive)}
           scrollTo={ref => scrollTo(ref)}/>
+        </div>
     </div>
   )
 }
