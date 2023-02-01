@@ -289,11 +289,12 @@ span.number {
   width: 25px;
   border: 2px solid black;
   border-radius: 8px;
-  transition: all 1s ease-in;
+  transition: all .1s ease-in;
   position: relative;
   bottom: 25px;
   right: 15px;
 }
+
 
 .favoriteButton:checked{
   border: 6px solid var(--accentColor);
