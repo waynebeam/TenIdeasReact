@@ -2,7 +2,7 @@ import { ArchiveCard } from "./ArchiveCard";
 import { useState, useRef } from 'react';
 import { PageButtons } from './PageButtons';
 
-export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveArchive, darkMode, inputStyle}) => {
+export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveArchive, darkMode, inputStyle, scrollTo}) => {
   const [showFavorites, setShowFavorites] = useState(false);
   const [filterText, setFilterText] = useState("");
   const [actionSheetIndex, setActionSheetIndex] = useState(null);
@@ -266,6 +266,7 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
             prevPage={prevPage}
             firstPage={firstPage}
             lastPage={lastPage}
+            scrollTo={()=>scrollTo(screenTop)}
           />
         }
       </div>

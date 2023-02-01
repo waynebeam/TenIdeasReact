@@ -1,12 +1,16 @@
 
 export function PageButtons(props) {
 
+  function changePage(navFunc) {
+    navFunc();
+    props.scrollTo();
+  }
   return (
     <div className="pageButtonsContainer">
-      <button onClick={props.firstPage}>{"<<"}</button>
-      <button onClick={props.prevPage}>{"<"}</button>
-      <button onClick={props.nextPage}>{">"}</button>
-      <button onClick={props.lastPage}>{">>"}</button>
+      <button onClick={()=>changePage(props.firstPage)}>{"<<"}</button>
+      <button onClick={()=>changePage(props.prevPage)}>{"<"}</button>
+      <button onClick={()=>changePage(props.nextPage)}>{">"}</button>
+      <button onClick={()=>changePage(props.lastPage)}>{">>"}</button>
     </div>
   )
 }

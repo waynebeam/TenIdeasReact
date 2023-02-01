@@ -284,7 +284,8 @@ export function IdeasList() {
           archiveIdeas={archiveIdeas ? archiveIdeas : []}
           toggleFavorite={toggleFavorite}
           clearArchive={clearArchive}
-          saveArchive={(archive) => saveArchive(archive)}/>
+          saveArchive={(archive) => saveArchive(archive)}
+          scrollTo={ref => scrollTo(ref)}/>
     </div>
   )
 }
