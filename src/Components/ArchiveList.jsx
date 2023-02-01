@@ -11,7 +11,7 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
 
   const screenTop = useRef();
   
-  let cardsPerPage = 10;
+  let cardsPerPage = 5;
   let archiveCards = generateArchiveCards();
   let headingStyle = "archiveHeading listHeading";
   let spanStyle = "spanStyle";

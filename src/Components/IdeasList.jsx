@@ -73,7 +73,7 @@ export function IdeasList() {
   }
 
   function scrollTo(ref){
-    ref.current.scrollIntoView();
+    ref.current.scrollIntoView({behavior: "smooth"});
   }
 
   function updateIdeas(value, index) {
@@ -277,7 +277,7 @@ export function IdeasList() {
           </div>
         }
       </div>
-
+        
         <ArchiveList
           darkMode={darkMode}
           inputStyle={inputStyle}
