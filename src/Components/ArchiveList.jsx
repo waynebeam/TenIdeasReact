@@ -51,9 +51,9 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
     }
 
     ideasToSort.forEach((idea) => {
-      if (idea.topic !== prevIdea.topic) {
+      if (idea.topic !== prevIdea.topic || listOfIdeas.length === 10) {
         if (listOfIdeas.length) { listOfCards.push(listOfIdeas) }
-        listOfIdeas = [];
+         listOfIdeas = [];
       }
       listOfIdeas.push(idea);
       prevIdea = idea;
