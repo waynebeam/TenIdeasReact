@@ -187,7 +187,7 @@ export function IdeasList() {
     let index = archiveIdeas.findIndex(idea => idea === toggledidea);
     toggledidea.favorite = !toggledidea.favorite;
     let newArchive = [...archiveIdeas.slice(0, index), toggledidea, ...archiveIdeas.slice(index + 1)];
-    saveArchive(newArchive);
+   saveArchive(newArchive);
   }
 
   function clearArchive() {

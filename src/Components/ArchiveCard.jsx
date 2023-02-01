@@ -1,6 +1,6 @@
 import {CountIcon} from './CountIcon'
 
-export const ArchiveCard = ({archiveIdeas, colorSwap, toggleFavorite, deleteCard, actionSheetIndex, index, toggleActionSheet, darkMode}) => {
+export const ArchiveCard = ({archiveIdeas, colorSwap, toggleFavorite, deleteCard, actionSheetIndex, index, toggleActionSheet, darkMode, showRandomIdea}) => {
   
 
   let spanStyle = "spanStyle";
@@ -61,7 +61,7 @@ let date;
                 checked={idea.favorite}
                 
               />
-              <CountIcon index={i+1} darkMode={darkMode} isAnimated={false}></CountIcon>
+              {!showRandomIdea && <CountIcon index={i+1} darkMode={darkMode} isAnimated={false} />}
               <hr />
              
             </div>

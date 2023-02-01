@@ -267,7 +267,7 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
               actionSheetIndex={actionSheetIndex}
               index={i}
               toggleActionSheet={() => toggleActionSheet(i)}
-
+              showRandomIdea={showRandomIdea}
             />)
         }
 
