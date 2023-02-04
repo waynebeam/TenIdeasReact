@@ -271,7 +271,10 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
             />)
         }
 
-        {archiveCards.length > cardsPerPage &&
+        
+      </div>
+      {
+          archiveCards.length > cardsPerPage &&
           <PageButtons
             nextPage={nextPage}
             prevPage={prevPage}
@@ -280,7 +283,6 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
             scrollTo={()=>scrollTo(screenTop)}
           />
         }
-      </div>
       {
         archiveIdeas.length && !showRandomIdea && !showFavorites ?
           <button className={"clearArchive"} onClick={() => clearArchive()}>Clear archive</button>
