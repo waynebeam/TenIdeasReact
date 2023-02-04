@@ -57,8 +57,8 @@ let date;
               <input
                 className={favoriteButtonStyle}
                 type="checkbox"
-                onChange={() => toggleFavorite(idea)}
-                checked={idea.favorite}
+                onTransitionEnd={() => toggleFavorite(idea)}
+                defaultChecked={idea.favorite}
                 
               />
               {!showRandomIdea && <CountIcon index={i+1} darkMode={darkMode} isAnimated={false} />}
