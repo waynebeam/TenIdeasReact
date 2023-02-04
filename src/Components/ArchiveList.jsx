@@ -187,6 +187,7 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
             {
               !showRandomIdea ?
                 <div className="archiveControlButtons">
+                  <div>
                   <input
                     className={inputStyle}
 
@@ -199,6 +200,7 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
                     <button
                       onClick={() => setFilterText("")}>❌</button>
                   }
+                    </div>
                   <button
                     className="archiveButton"
                     onClick={() => {
@@ -208,6 +210,8 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
                   >
                     {showFavorites ? <span>Viewing: <span style={{ color: "darkgoldenrod" }}>Favorites</span></span> : "Viewing: All"}</button>
 
+                  {
+                    !filterText &&
                   <button
                     className="archiveButton"
                     onClick={() => {
@@ -218,6 +222,7 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
                   >{
                       randomDesign()
                     }</button>
+                  }
                 </div>
                 :
                 <div className="archiveControlButtons">

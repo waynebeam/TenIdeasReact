@@ -269,7 +269,8 @@ button:active {
 }
 
 .spanStyle {
-  font-size: 18px;
+  font-size: 20px;
+  margin-top: 15px;
   color: black;
 }
 .spanStyleDark {
@@ -391,7 +392,7 @@ hr {
   border: solid 2px;
   border-radius: 5px;
   padding: 15px 30px;
-  margin: 20px 0;
+  margin: 20px 0 5px 0;
 
   
 }
