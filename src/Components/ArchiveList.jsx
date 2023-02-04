@@ -203,6 +203,7 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
                     className="archiveButton"
                     onClick={() => {
                       setShowFavorites(!showFavorites)
+                      setActionSheetIndex(null);
                     }}
                   >
                     {showFavorites ? <span>Viewing: <span style={{ color: "darkgoldenrod" }}>Favorites</span></span> : "Viewing: All"}</button>
