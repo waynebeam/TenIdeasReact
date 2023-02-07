@@ -375,6 +375,7 @@ hr {
 .pageButtonsContainer {
   display: flex;
   justify-content: center;
+  align-items:center;
   margin-top: 10px;
 }
 
@@ -394,7 +395,6 @@ hr {
   padding: 15px 30px;
   margin: 20px 0 5px 0;
 
-  
 }
 
 .archiveButton {
@@ -406,7 +406,11 @@ hr {
   display: flex;
   flex-direction:column;
   align-items: center;
-  
+}
+
+.pageNumbers {
+  color: var(--accentColor);
+  font-size: 1.5rem;
 }
 
 

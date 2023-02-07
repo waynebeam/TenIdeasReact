@@ -269,6 +269,7 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
           lastPage={lastPage}
           archiveStartingIndex={archiveStartingIndex}
           cardsPerPage={cardsPerPage}
+          totalCards={archiveCards.length}
           />
           
       }
@@ -304,6 +305,7 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
             scrollTo={()=>scrollTo(screenTop)}
             archiveStartingIndex={archiveStartingIndex}
             cardsPerPage={cardsPerPage}
+            totalCards={archiveCards.length}
           />
         }
       {
