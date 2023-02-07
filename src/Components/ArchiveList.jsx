@@ -29,7 +29,7 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
     {
       scrollTo(screenTop)
     }
-  }, [archiveIdeas.length])
+  }, [archiveIdeas.length, archiveStartingIndex])
   
   function generateArchiveCards() {
     let listOfCards = [];
@@ -146,18 +146,29 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
   }
 
   function firstPage() {
-    setArchiveStartingIndex(0);
+    if(archiveStartingIndex !== 0){
+      setArchiveStartingIndex(0);
+      return true;
+    }
+    return false;
   }
 
   function lastPage() {
-    setArchiveStartingIndex(archiveCards.length - cardsPerPage)
+    let lastPageNum = archiveCards.length - cardsPerPage;
+    if(archiveStartingIndex !== lastPageNum){
+      setArchiveStartingIndex(lastPageNum)
+      return true;
+    }
+    return false;
   }
   
   function nextPage(){
     if(archiveCards.length > archiveStartingIndex + cardsPerPage)
     {
       setArchiveStartingIndex(archiveStartingIndex + cardsPerPage);
+      return true;
     }
+    return false;
   }
 
   function prevPage(){
@@ -166,7 +177,9 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
       let index = archiveStartingIndex - cardsPerPage;
       index = index < 0 ? 0 : index;
       setArchiveStartingIndex(index);
+      return true;
     }
+    return false;
   }
 
   //return for render starts here
@@ -254,6 +267,8 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
           prevPage={prevPage}
           firstPage={firstPage}
           lastPage={lastPage}
+          archiveStartingIndex={archiveStartingIndex}
+          cardsPerPage={cardsPerPage}
           />
           
       }
@@ -287,6 +302,8 @@ export const ArchiveList = ({ archiveIdeas, toggleFavorite, clearArchive, saveAr
             firstPage={firstPage}
             lastPage={lastPage}
             scrollTo={()=>scrollTo(screenTop)}
+            archiveStartingIndex={archiveStartingIndex}
+            cardsPerPage={cardsPerPage}
           />
         }
       {

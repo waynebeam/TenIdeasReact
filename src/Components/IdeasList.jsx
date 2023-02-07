@@ -16,6 +16,7 @@ function loadIsMuted() {
 
 
 
+
 export function IdeasList() {
   const [topic, setTopic] = useState("");
   const [topicSet, setTopicSet] = useState(false);
@@ -71,10 +72,36 @@ export function IdeasList() {
     headingAnimStyle = " headingAnimDark";
   }
 
+//   function loadIdeas() {
+//   let loadedIdeas = JSON.parse(localStorage.getItem("ideas"));
+//     console.log(loadedIdeas);
+//   if(!loadedIdeas.length){
+//     return [];
+//   }
+//   let savedDate = new Date(loadedIdeas.date);
+//   let savedDay = savedDate.getDate();
+//   let savedMonth = savedDate.getMonth();
+//   let date = new Date();
+//   if(savedDay === date.getDate() && savedMonth === date.getMonth())
+//   {
+//     setTopic(loadedIdeas.topic);
+//     saveTopic();
+//     setIdeaIndex(loadedIdeas.length);
+//     return loadedIdeas;
+//   }
+
+//   return [];
+  
+// }
+  
   function scrollTo(ref){
     ref.current.scrollIntoView({behavior: "smooth"});
   }
 
+  useEffect(()=>{
+    localStorage.setItem("ideas", JSON.stringify(ideas))
+  },[ideas]);
+  
   function updateIdeas(value, index) {
     let newIdeas = [...ideas];
     newIdeas[index].idea = value.target.value;
@@ -154,16 +181,15 @@ export function IdeasList() {
   }
 
   function saveTopic() {
-    if (topic) {
       blankIdea.date = new Date();
       setIdeas([blankIdea]);
       setTopicSet(true);
       playSound(0);
-    }
+    
   }
 
   function handleKeyPress(e) {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && topic) {
       saveTopic();
     }
   }

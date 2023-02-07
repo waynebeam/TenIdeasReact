@@ -2,8 +2,8 @@
 export function PageButtons(props) {
 
   function changePage(navFunc) {
-    navFunc();
-    if(props.scrollTo)
+    let doScroll = navFunc();
+    if(props.scrollTo && doScroll)
     props.scrollTo();
   }
   return (
